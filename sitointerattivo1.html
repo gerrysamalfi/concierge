@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GERRY'S AMALFI – Luxury Digital Concierge</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --navy:#081524;
+    --gold:#c6a55b;
+    --white:#ffffff;
+}
+
+body{
+    margin:0;
+    font-family:'Montserrat',sans-serif;
+    color:var(--white);
+    background:var(--navy);
+    overflow-x:hidden;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding:80px 10%;
+    box-sizing:border-box;
+    position:relative;
+    animation:fade 0.8s ease;
+}
+
+.active{ display:block; }
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(15px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* HOME */
+#home{
+    background:
+    radial-gradient(circle at center, rgba(198,165,91,0.08), transparent 60%),
+    linear-gradient(to bottom, #07121f, #0b1c2d 60%, #07121f);
+    text-align:center;
+}
+
+.logo-container{
+    margin-top:100px;
+}
+
+.logo-container img{
+    width:340px;
+    max-width:85%;
+    filter: drop-shadow(0 0 30px rgba(198,165,91,0.5));
+}
+
+.brand-name{
+    font-family:'Playfair Display',serif;
+    font-size:44px;
+    letter-spacing:6px;
+    margin-top:30px;
+    color:var(--gold);
+}
+
+.tagline{
+    margin-top:10px;
+    font-weight:300;
+    letter-spacing:2px;
+    opacity:0.85;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:80px;
+}
+
+.button{
+    background:linear-gradient(145deg,#10263c,#0b1c2d);
+    border:1.5px solid var(--gold);
+    padding:45px 20px;
+    text-align:center;
+    font-size:18px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:all 0.35s ease;
+}
+
+.button:hover{
+    background:var(--gold);
+    color:var(--navy);
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(198,165,91,0.4);
+}
+
+.bg{
+    background:
+    linear-gradient(rgba(8,21,36,0.9), rgba(8,21,36,0.9)),
+    url("background.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+h2{
+    font-family:'Playfair Display',serif;
+    color:var(--gold);
+    margin-bottom:30px;
+    font-size:28px;
+}
+
+h2::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:2px;
+    background:var(--gold);
+    margin-top:15px;
+}
+
+.back{
+    position:absolute;
+    top:30px;
+    left:40px;
+    cursor:pointer;
+    color:var(--gold);
+}
+
+.content{
+    max-width:800px;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.info{
+    margin-top:25px;
+    font-weight:500;
+    opacity:0.9;
+}
+
+@media(max-width:768px){
+    .page{ padding:60px 8%; }
+    .brand-name{ font-size:32px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="page active">
+    <div class="logo-container">
+        <img src="logo.png" alt="GERRY'S AMALFI Logo">
+    </div>
+
+    <div class="brand-name">GERRY'S AMALFI</div>
+    <div class="tagline">Luxury Digital Concierge • Amalfi Coast</div>
+
+    <div class="menu">
+        <div class="button" onclick="showPage('beach')">🏖️ Beach Club Paradise</div>
+        <div class="button" onclick="showPage('vespa')">🛵 Vespa Experience</div>
+        <div class="button" onclick="showPage('boat')">🚤 Boat Charter & Tours</div>
+        <div class="button" onclick="showPage('car')">🚗 Luxury Transfers</div>
+        <div class="button" onclick="showPage('luggage')">🧳 Porter Service</div>
+        <div class="button" onclick="showPage('cooking')">🍝 Culinary Academy</div>
+        <div class="button" onclick="showPage('tickets')">🎫 Travel & Booking</div>
+    </div>
+</div>
+
+<!-- BEACH -->
+<div id="beach" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>SPIAGGIA PRIVATA | PRIVATE BEACH</h2>
+<div class="content">
+<strong>ITA:</strong> Il tuo angolo di paradiso lontano dal caos. Include: Navetta A/R da Amalfi, 2 prendisole, 1 ombrellone, Wi-Fi, doccia e un piatto a scelta dal menu (bibite escl.).<br><br>
+<strong>ENG:</strong> Your corner of paradise away from the crowds. Includes: Shuttle to/from Amalfi, 2 sunbeds, 1 umbrella, Wi-Fi, shower, and one dish of your choice (drinks excl.).
+<div class="info">
+ℹ️ Chiedi al desk per costi e prenotazioni / Ask at the desk for prices.
+</div>
+</div>
+</div>
+
+<!-- VESPA -->
+<div id="vespa" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>NOLEGGIO VESPA | VESPA RENTAL</h2>
+<div class="content">
+<strong>ITA:</strong> Esplora la Costiera senza stress. Noleggio scooter e Vespe con consegna e ritiro in sede. Fermati dove vuoi per le tue foto, addio problemi di parcheggio!<br><br>
+<strong>ENG:</strong> Explore the Coast stress-free. Scooter and Vespa rental with on-site pick-up and drop-off.
+<div class="info">
+ℹ️ Chiedi al desk per costi e prenotazioni / Ask at the desk for prices.
+</div>
+</div>
+</div>
+
+<!-- BOAT -->
+<div id="boat" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>BARCA PRIVATA | PRIVATE BOAT</h2>
+<div class="content">
+<strong>ITA:</strong> Vivi il mare da protagonista. Noleggio barche con o senza skipper (anche senza patente nautica).<br><br>
+<strong>ENG:</strong> Private boat rental with or without skipper (no license required).
+<div class="info">
+ℹ️ Chiedi al desk per costi e prenotazioni / Ask at the desk for prices.
+</div>
+</div>
+</div>
+
+<!-- PRIVATE CAR -->
+<div id="car" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>AUTO PRIVATA & TRANSFER | PRIVATE CAR</h2>
+<div class="content">
+<strong>ITA:</strong> Viaggia in totale comfort. Organizziamo trasferimenti per stazioni, aeroporti o rientro notturno.<br><br>
+<strong>ENG:</strong> Luxury transfers to stations, airports, or late-night returns.
+<div class="info">
+ℹ️ Chiedi al desk per costi e prenotazioni / Ask at the desk for prices.
+</div>
+</div>
+</div>
+
+<!-- LUGGAGE -->
+<div id="luggage" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>TRASPORTO BAGAGLI | LUGGAGE SERVICE</h2>
+<div class="content">
+<strong>ITA:</strong> Trasporto bagagli professionale da e per la tua struttura.<br><br>
+<strong>ENG:</strong> Professional luggage transport service.
+<div class="info">
+ℹ️ Chiedi al desk per costi e prenotazioni / Ask at the desk for prices.
+</div>
+</div>
+</div>
+
+<!-- COOKING -->
+<div id="cooking" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>SCUOLA DI CUCINA | COOKING CLASS</h2>
+<div class="content">
+<strong>ITA:</strong> Pasta fatta in casa, parmigiana e tiramisù autentico.<br><br>
+<strong>ENG:</strong> Homemade pasta, eggplant parmigiana, and authentic tiramisu.
+<div class="info">
+ℹ️ Chiedi al desk per costi e prenotazioni / Ask at the desk for prices.
+</div>
+</div>
+</div>
+
+<!-- TICKETS -->
+<div id="tickets" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>BIGLIETTI BUS & TRAGHETTI | BUS & FERRY</h2>
+<div class="content">
+<strong>ITA:</strong> Organizziamo l’acquisto di biglietti autobus SITA e traghetti.<br><br>
+<strong>ENG:</strong> We arrange SITA bus and ferry tickets.
+</div>
+
+<div style="margin-top:40px;">
+    <div class="button" style="max-width:320px;" onclick="showPage('sita')">
+        🚌 Orari Bus SITA
+    </div>
+</div>
+
+<div class="info">
+ℹ️ Chiedi al desk per costi e prenotazioni / Ask at the desk for prices.
+</div>
+</div>
+
+<!-- SITA -->
+<div id="sita" class="page bg">
+<div class="back" onclick="showPage('tickets')">← Back</div>
+<h2>ORARI BUS SITA | SITA BUS SCHEDULE</h2>
+
+<div style="margin-top:30px; text-align:center;">
+    <img src="orari-sita.jpg" 
+         style="max-width:100%; border-radius:12px; box-shadow:0 10px 40px rgba(0,0,0,0.6);" 
+         alt="Orari Bus SITA">
+</div>
+
+<div class="info">
+ℹ️ Chiedi al desk per biglietti / Ask at the desk for tickets.
+</div>
+</div>
+
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
