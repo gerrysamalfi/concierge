@@ -141,6 +141,27 @@ h2::after{
     opacity:0.9;
 }
 
+/* WHATSAPP BUTTON */
+.whatsapp{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25D366;
+    color:white;
+    padding:15px 18px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+    transition:0.3s;
+    z-index:9999;
+}
+
+.whatsapp:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.5);
+}
+
 @media(max-width:768px){
     .page{ padding:60px 8%; }
     .brand-name{ font-size:32px; }
@@ -149,6 +170,11 @@ h2::after{
 </head>
 
 <body>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/3319181277" target="_blank" class="whatsapp">
+📲 WhatsApp
+</a>
 
 <!-- HOME -->
 <div id="home" class="page active">
