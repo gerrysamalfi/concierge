@@ -155,7 +155,46 @@ h2::after{
 
 .whatsapp:hover{
     transform:translateY(-4px);
-    box-shadow:0 12px 30px rgba(0,0,0,0.5);
+}
+
+a.map-link{
+    color:var(--gold);
+    text-decoration:none;
+    font-weight:500;
+}
+a.map-link:hover{
+    text-decoration:underline;
+}
+
+/* QR Modal */
+#qrModal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+.modal-content{
+    position:relative;
+}
+.close{
+    position:absolute;
+    top:-40px;
+    right:0;
+    font-size:28px;
+    cursor:pointer;
+    color:var(--gold);
+}
+.modal-content img{
+    max-width:90vw;
+    max-height:85vh;
+    border-radius:16px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.7);
 }
 
 @media(max-width:768px){
@@ -167,17 +206,13 @@ h2::after{
 
 <body>
 
-<!-- WHATSAPP BUTTON -->
-<a href="https://wa.me/3319181277" target="_blank" class="whatsapp">
-📲 WhatsApp
-</a>
+<a href="https://wa.me/3319181277" target="_blank" class="whatsapp">📲 WhatsApp</a>
 
 <!-- HOME -->
 <div id="home" class="page active">
 <div class="logo-container">
 <img src="logo.png" alt="GERRY'S AMALFI Logo">
 </div>
-
 <div class="brand-name">GERRY'S AMALFI</div>
 <div class="tagline">Luxury Digital Concierge • Amalfi Coast</div>
 
@@ -189,6 +224,7 @@ h2::after{
 <div class="button" onclick="showPage('luggage')">🧳 Porter Service</div>
 <div class="button" onclick="showPage('cooking')">🍝 Culinary Academy</div>
 <div class="button" onclick="showPage('tickets')">🎫 Travel & Booking</div>
+<div class="button" onclick="showPage('checkin')">🗝️ Check-In Guide</div>
 </div>
 </div>
 
@@ -309,11 +345,78 @@ h2::after{
 </div>
 </div>
 
+<!-- CHECK-IN GUIDE -->
+<div id="checkin" class="page bg">
+<div class="back" onclick="showPage('home')">← Back</div>
+<h2>CHECK-IN GUIDE</h2>
+<div class="content">
+
+Siamo felici di ospitarvi. Per rendere il vostro arrivo il più semplice possibile, abbiamo riassunto qui sotto tutte le informazioni necessarie per il vostro check-in.
+
+<br><br>
+
+<h3>🕒 Orari e Procedure</h3>
+Check-in Standard: Dalle ore 15:00 alle 21:00.<br>
+Late Check-in: Disponibile solo su richiesta. Si prega di notare che sono previsti costi di gestione extra per gli arrivi tardivi.<br>
+Early Check-in: Se arrivate prima che la camera sia pronta, potete lasciare gratuitamente i vostri bagagli in reception. Nel frattempo, vi invitiamo a rilassarvi sulla nostra terrazza per mangiare un boccone o sorseggiare un drink godendovi il panorama.<br><br>
+
+<h3>📝 Note Importanti</h3>
+Documenti: Al momento dell'arrivo è obbligatorio esibire i documenti d'identità di tutti gli occupanti.<br>
+Pagamenti: Tutti gli extra vanno saldati al momento del check-in.<br>
+Tassa di Soggiorno: Il pagamento della tassa di soggiorno deve essere effettuato esclusivamente in contanti.<br><br>
+
+<h3>📶 Connessione Wi-Fi</h3>
+Per collegarti istantaneamente alla nostra rete, clicca qui sotto:
+
+<br><br>
+
+<div style="text-align:center;">
+<div class="button" style="max-width:260px; padding:18px 20px;" onclick="openQR()">
+📲 Apri QR Code Wi-Fi
+</div>
+</div>
+
+<br><br>
+
+<h3>🚗 Parcheggio e Posizioni</h3>
+Offriamo due soluzioni per la vostra auto:<br>
+Parcheggio Privato: Disponibile a pagamento. Per costi e disponibilità, rivolgetevi direttamente al desk.<br>
+Parcheggio Pubblico: Situato a Pogerola.<br><br>
+
+📍 <a href="https://maps.app.goo.gl/rxuGa3wAyrLPGWGa7" target="_blank" class="map-link">
+Posizione Gerry's Pub - Google Maps
+</a><br><br>
+
+🅿️ <a href="https://maps.app.goo.gl/z9f3vrrf9LFZgNvA9" target="_blank" class="map-link">
+Parcheggio Pubblico Pogerola - Google Maps
+</a><br><br>
+
+Non vediamo l'ora di avervi come nostri ospiti! Se avete domande durante il viaggio, non esitate a contattarci.
+
+</div>
+</div>
+
+<!-- QR MODAL -->
+<div id="qrModal" onclick="closeQR()">
+<div class="modal-content" onclick="event.stopPropagation()">
+<span class="close" onclick="closeQR()">✕</span>
+<img src="qr-wifi.jpeg" alt="QR Code WiFi">
+</div>
+</div>
+
 <script>
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openQR(){
+document.getElementById("qrModal").style.display = "flex";
+}
+
+function closeQR(){
+document.getElementById("qrModal").style.display = "none";
 }
 </script>
 
