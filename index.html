@@ -166,40 +166,35 @@ a.map-link:hover{
     text-decoration:underline;
 }
 
-/* LUX TABLE */
-.lux-table{
+/* QR Modal */
+#qrModal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
     width:100%;
-    border-collapse:separate;
-    border-spacing:0;
-    margin-top:25px;
-    font-size:16px;
-    border-radius:14px;
-    background:linear-gradient(145deg,#0e2236,#0b1c2d);
-    box-shadow:0 20px 50px rgba(0,0,0,0.6);
-    overflow:hidden;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
 }
-.lux-table th{
-    padding:18px 12px;
-    font-weight:600;
+.modal-content{
+    position:relative;
+}
+.close{
+    position:absolute;
+    top:-40px;
+    right:0;
+    font-size:28px;
+    cursor:pointer;
     color:var(--gold);
-    letter-spacing:1px;
-    font-size:14px;
-    border-bottom:1px solid rgba(198,165,91,0.4);
 }
-.lux-table td{
-    padding:16px 12px;
-    border-bottom:1px solid rgba(255,255,255,0.08);
-}
-.lux-table tr:last-child td{
-    border-bottom:none;
-}
-.lux-table tr:hover{
-    background:rgba(198,165,91,0.08);
-}
-.price-highlight{
-    font-weight:600;
-    font-size:17px;
-    color:var(--gold);
+.modal-content img{
+    max-width:90vw;
+    max-height:85vh;
+    border-radius:16px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.7);
 }
 
 @media(max-width:768px){
@@ -228,8 +223,8 @@ a.map-link:hover{
 <div class="button" onclick="showPage('car')">🚗 Luxury Transfers</div>
 <div class="button" onclick="showPage('luggage')">🧳 Porter Service</div>
 <div class="button" onclick="showPage('cooking')">🍝 Culinary Academy</div>
+<div class="button" onclick="showPage('pompei')">🏛️ Pompei & Vesuvio Excursion 🌋</div>
 <div class="button" onclick="showPage('tickets')">🎫 Travel & Booking</div>
-<div class="button" onclick="showPage('pompei')">🏛️ POMPEI & VESUVIO EXCURSION 🌋</div>
 <div class="button" onclick="showPage('checkin')">🗝️ Check-In Guide</div>
 </div>
 </div>
@@ -353,134 +348,156 @@ a.map-link:hover{
 
 <!-- CHECK-IN GUIDE -->
 <div id="checkin" class="page bg">
-<div class="back" onclick="showPage('home')">← Back</div>
-<h2>CHECK-IN GUIDE</h2>
-<div style="text-align:center; margin-bottom:30px;">
-<button class="button" style="max-width:120px; margin-right:10px;" onclick="showCheckIn('ita')">🇮🇹 ITA</button>
-<button class="button" style="max-width:120px;" onclick="showCheckIn('eng')">🇬🇧 ENG</button>
-</div>
+  <div class="back" onclick="showPage('home')">← Back</div>
+  <h2>CHECK-IN GUIDE</h2>
+  
+  <div style="text-align:center; margin-bottom:30px;">
+    <button class="button" style="max-width:120px; margin-right:10px;" onclick="showCheckIn('ita')">🇮🇹 ITA</button>
+    <button class="button" style="max-width:120px;" onclick="showCheckIn('eng')">🇬🇧 ENG</button>
+  </div>
 
-<div id="checkin-ita" class="checkin-content">
-<div class="content">
-Siamo felici di ospitarvi. Per rendere il vostro arrivo il più semplice possibile, abbiamo riassunto qui sotto tutte le informazioni necessarie per il vostro check-in.
-<h3>🕒 Orari e Procedure</h3>
-Check-in Standard: Dalle ore 15:00 alle 21:00.<br>
-Late Check-in: Disponibile solo su richiesta. Si prega di notare che sono previsti costi di gestione extra per gli arrivi tardivi.<br>
-Early Check-in: Se arrivate prima che la camera sia pronta, potete lasciare gratuitamente i vostri bagagli in reception. Nel frattempo, vi invitiamo a rilassarvi sulla nostra terrazza per mangiare un boccone o sorseggiare un drink godendovi il panorama.
-<h3>📋 Documenti Richiesti</h3>
-Carta d'identità o Passaporto valido.<br>
-Modulo di registrazione compilato.<br>
-<h3>💳 Pagamenti</h3>
-Il pagamento finale può essere effettuato in contanti o con carta di credito presso la reception.
-</div>
-</div>
+  <!-- Contenuti ITA -->
+  <div id="checkin-ita" class="checkin-content">
+    <div class="content">
+      Siamo felici di ospitarvi. Per rendere il vostro arrivo il più semplice possibile, abbiamo riassunto qui sotto tutte le informazioni necessarie per il vostro check-in.
+      <br><br>
+      <h3>🕒 Orari e Procedure</h3>
+      Check-in Standard: Dalle ore 15:00 alle 21:00.<br>
+      Late Check-in: Disponibile solo su richiesta. Si prega di notare che sono previsti costi di gestione extra per gli arrivi tardivi.<br>
+      Early Check-in: Se arrivate prima che la camera sia pronta, potete lasciare gratuitamente i vostri bagagli in reception. Nel frattempo, vi invitiamo a rilassarvi sulla nostra terrazza per mangiare un boccone o sorseggiare un drink godendovi il panorama.<br><br>
+      
+      <h3>📝 Note Importanti</h3>
+      Documenti: Al momento dell'arrivo è obbligatorio esibire i documenti d'identità di tutti gli occupanti.<br>
+      Pagamenti: Tutti gli extra vanno saldati al momento del check-in.<br>
+      Tassa di Soggiorno: Il pagamento della tassa di soggiorno deve essere effettuato esclusivamente in contanti.<br><br>
+      
+      <h3>📶 Connessione Wi-Fi</h3>
+      Per collegarti istantaneamente alla nostra rete, clicca qui sotto:<br><br>
+      <div style="text-align:center;">
+        <div class="button" style="max-width:260px; padding:18px 20px;" onclick="openQR()">
+          📲 Apri QR Code Wi-Fi
+        </div>
+      </div>
+      <br><br>
+      
+      <h3>🚗 Parcheggio e Posizioni</h3>
+      Offriamo due soluzioni per la vostra auto:<br>
+      Parcheggio Privato: Disponibile a pagamento. Per costi e disponibilità, rivolgetevi direttamente al desk.<br>
+      Parcheggio Pubblico: Situato a Pogerola.<br><br>
+      
+      📍 <a href="https://maps.app.goo.gl/9rtVpGSWrB51TKNW9" target="_blank" class="map-link">Posizione Gerry's Pub - Google Maps</a><br><br>
+      🅿️ <a href="https://maps.app.goo.gl/AnQt1Uw8e71DsfXC6" target="_blank" class="map-link">Parcheggio Pubblico Pogerola - Google Maps</a><br><br>
+      
+      Non vediamo l'ora di avervi come nostri ospiti! Se avete domande durante il viaggio, non esitate a contattarci.
+    </div>
+  </div>
 
-<div id="checkin-eng" class="checkin-content" style="display:none;">
-<div class="content">
-We are delighted to welcome you. To make your arrival as smooth as possible, we have summarized all the necessary check-in information below.
-<h3>🕒 Hours & Procedures</h3>
-Standard Check-in: From 3:00 PM to 9:00 PM.<br>
-Late Check-in: Available upon request only. Please note additional handling fees may apply.<br>
-Early Check-in: If you arrive before your room is ready, you may leave your luggage at reception free of charge. In the meantime, relax on our terrace for a snack or a drink while enjoying the view.
-<h3>📋 Required Documents</h3>
-Valid ID card or Passport.<br>
-Completed registration form.<br>
-<h3>💳 Payments</h3>
-Final payment can be made in cash or by credit card at reception.
+  <!-- Contenuti ENG -->
+  <div id="checkin-eng" class="checkin-content" style="display:none;">
+    <div class="content">
+      We are delighted to have you as our guests. To make your arrival as smooth as possible, we have summarized all the necessary information for your check-in below.
+      <br><br>
+      <h3>🕒 Times and Procedures</h3>
+      Standard Check-in: From 3:00 PM to 9:00 PM.<br>
+      Late Check-in: Available only upon request. Please note that additional management fees apply for late arrivals.<br>
+      Early Check-in: If you arrive before your room is ready, you can leave your luggage at our reception free of charge. In the meantime, we invite you to relax on our terrace to enjoy a bite to eat or a drink while taking in the view.<br><br>
+      
+      <h3>📝 Important Notes</h3>
+      Documents: Upon arrival, it is mandatory to present identification documents for all occupants.<br>
+      Payments: All extras must be settled at the time of check-in.<br>
+      Tourist Tax: The payment of the tourist tax must be made exclusively in cash.<br><br>
+      
+      <h3>📶 Wi-Fi Connection</h3>
+      To connect instantly to our network, click below:<br><br>
+      <div style="text-align:center;">
+        <div class="button" style="max-width:260px; padding:18px 20px;" onclick="openQR()">
+          📲 Open Wi-Fi QR Code
+        </div>
+      </div>
+      <br><br>
+      
+      <h3>🚗 Parking and Locations</h3>
+      We offer two solutions for your car:<br>
+      Private Parking: Available for a fee. For costs and availability, please contact the desk directly.<br>
+      Public Parking: Located in Pogerola.<br><br>
+      
+      📍 <a href="https://maps.app.goo.gl/9rtVpGSWrB51TKNW9" target="_blank" class="map-link">Gerry's Pub Location - Google Maps</a><br><br>
+      🅿️ <a href="https://maps.app.goo.gl/AnQt1Uw8e71DsfXC6" target="_blank" class="map-link">Pogerola Public Parking - Google Maps</a><br><br>
+      
+      We look forward to having you as our guests! If you have any questions during your journey, please do not hesitate to contact us.
+    </div>
+  </div>
 </div>
-</div>
-</div>
-
-<!-- POMPEI -->
+<!-- POMPEI & VESUVIO EXCURSION -->
 <div id="pompei" class="page bg">
-<div class="back" onclick="showPage('home')">← Back</div>
-<h2>POMPEI & VESUVIO EXCURSION</h2>
-<div class="content">
-
-<strong>ITA:</strong>
-Scopri la storia millenaria di Pompei e la maestosità del Vesuvio in un unico tour indimenticabile.
-Partenza da Amalfi (Piazza Flavio Gioia - Terminal Bus).
-Il prezzo include il trasporto A/R in bus Granturismo, la guida autorizzata e i biglietti d'ingresso sia agli scavi che al cratere.
-Si prega di presentarsi al punto di incontro 15 minuti prima della partenza.
-<br><br>
-
-<strong>ENG:</strong>
-Discover the ancient history of Pompeii and the majesty of Mount Vesuvius in one unforgettable tour.
-Departure from Amalfi (Piazza Flavio Gioia - Bus Terminal).
-The price includes round-trip Gran Turismo bus transport, an authorized guide, and entrance tickets to both the ruins and the crater.
-Please arrive at the meeting point 15 minutes before departure.
-<br><br>
-
-<h3>🗓️ GIORNI / OPERATING DAYS</h3>
-
-<strong>ITA:</strong>
-Lunedì, Martedì, Mercoledì, Giovedì e Sabato.
-<br>
-<em>(Nota: L'escursione combinata Pompei + Vesuvio si effettua solo il Lunedì e il Mercoledì).</em>
-<br><br>
-
-<strong>ENG:</strong>
-Monday, Tuesday, Wednesday, Thursday, and Saturday.
-<br>
-<em>(Note: The combined Pompeii + Vesuvius tour is available only on Monday and Wednesday).</em>
-<br><br>
-
-<h3>💰 PREZZI / PRICES</h3>
-
-<div style="overflow-x:auto;">
-<table class="lux-table">
-<tr>
-<th></th>
-<th>SOLO POMPEI<br>ONLY POMPEI</th>
-<th>POMPEI + VESUVIO<br>BOTH</th>
-</tr>
-<tr>
-<td>Adulti / Adults</td>
-<td class="price-highlight">€ 110</td>
-<td class="price-highlight">€ 140</td>
-</tr>
-<tr>
-<td>EU Citizens (18-24)</td>
-<td>€ 90</td>
-<td>€ 120</td>
-</tr>
-<tr>
-<td>Children (11-17)</td>
-<td>€ 85</td>
-<td>€ 110</td>
-</tr>
-<tr>
-<td>Infants (2-10)</td>
-<td>€ 55</td>
-<td>€ 85</td>
-</tr>
-</table>
+  <div class="back" onclick="showPage('home')">← Back</div>
+  <h2>🏛️ POMPEI & VESUVIO EXCURSION 🌋</h2>
+  
+  <div class="content">
+    <strong>ITA:</strong> Scopri la storia millenaria di Pompei e la maestosità del Vesuvio in un unico tour indimenticabile. Partenza da Amalfi (Piazza Flavio Gioia - Terminal Bus). Il prezzo include il trasporto A/R in bus Granturismo, la guida autorizzata e i biglietti d'ingresso sia agli scavi che al cratere. Si prega di presentarsi al punto di incontro 15 minuti prima della partenza.<br><br>
+    
+    <strong>ENG:</strong> Discover the ancient history of Pompeii and the majesty of Mount Vesuvius in one unforgettable tour. Departure from Amalfi (Piazza Flavio Gioia - Bus Terminal). The price includes round-trip Gran Turismo bus transport, an authorized guide, and entrance tickets to both the ruins and the crater. Please arrive at the meeting point 15 minutes before departure.<br><br>
+    
+    <h3>🗓️ GIORNI / OPERATING DAYS</h3>
+    <strong>ITA:</strong> Lunedì, Martedì, Mercoledì, Giovedì e Sabato. (Nota: L'escursione combinata Pompei + Vesuvio si effettua solo il Lunedì e il Mercoledì).<br>
+    <strong>ENG:</strong> Monday, Tuesday, Wednesday, Thursday, and Saturday. (Note: The combined Pompeii + Vesuvius tour is available only on Monday and Wednesday).<br><br>
+    
+    <h3>💰 PREZZI / PRICES</h3>
+    <table style="width:100%; border-collapse: collapse; margin-bottom:20px;">
+      <tr style="border-bottom:1px solid var(--gold);">
+        <th></th>
+        <th>SOLO POMPEI / ONLY POMPEI</th>
+        <th>POMPEI + VESUVIO / BOTH</th>
+      </tr>
+      <tr>
+        <td>Adulti / Adults</td>
+        <td>€ 110</td>
+        <td>€ 140</td>
+      </tr>
+      <tr>
+        <td>EU Citizens (18-24)</td>
+        <td>€ 90</td>
+        <td>€ 120</td>
+      </tr>
+      <tr>
+        <td>Children (11-17)</td>
+        <td>€ 85</td>
+        <td>€ 110</td>
+      </tr>
+      <tr>
+        <td>Infants (2-10)</td>
+        <td>€ 55</td>
+        <td>€ 85</td>
+      </tr>
+    </table>
+    
+    <strong>ITA:</strong> Nota Bene: Per le riduzioni è obbligatorio esibire un documento d'identità valido.<br>
+    <strong>ENG:</strong> Please Note: A valid ID is mandatory to benefit from reduced rates.<br><br>
+    
+    <h3>💳 PRENOTAZIONE / BOOKING</h3>
+    <strong>ITA:</strong> Per la prenotazione, pagando in contanti possiamo prenotare direttamente presso il nostro desk o al bus. Se preferisci pagare con carta, comunicaci il tuo indirizzo email e ti invieremo un link di pagamento sicuro per confermare il tour.<br>
+    <strong>ENG:</strong> To book, you can pay in cash directly at our desk or at the bus. If you prefer to pay by card, provide us with your email address and we will send you a secure payment link to confirm the tour.<br><br>
+    
+    <div class="info">
+      ℹ️ Chiedi al desk per costi e maggiori info / Ask at the desk for costs and more info.
+    </div>
+  </div>
 </div>
 
-<br>
 
-<strong>ITA:</strong>
-Nota Bene: Per le riduzioni è obbligatorio esibire un documento d'identità valido.
-<br>
-<strong>ENG:</strong>
-Please Note: A valid ID is mandatory to benefit from reduced rates.
-<br><br>
+<script>
+function showCheckIn(lang){
+  document.getElementById('checkin-ita').style.display = (lang==='ita') ? 'block' : 'none';
+  document.getElementById('checkin-eng').style.display = (lang==='eng') ? 'block' : 'none';
+}
+</script>
 
-<h3>💳 PRENOTAZIONE / BOOKING</h3>
 
-<strong>ITA:</strong>
-Per la prenotazione, pagando in contanti possiamo prenotare direttamente presso il nostro desk o al bus.
-Se preferisci pagare con carta, comunicaci il tuo indirizzo email e ti invieremo un link di pagamento sicuro per confermare il tour.
-<br><br>
-
-<strong>ENG:</strong>
-To book, you can pay in cash directly at our desk or at the bus.
-If you prefer to pay by card, provide us with your email address and we will send you a secure payment link to confirm your tour.
-
-<div class="info">
-ℹ️ Chiedi al desk per disponibilità e maggiori informazioni / Ask at the desk for availability and more information.
-</div>
-
+<!-- QR MODAL -->
+<div id="qrModal" onclick="closeQR()">
+<div class="modal-content" onclick="event.stopPropagation()">
+<span class="close" onclick="closeQR()">✕</span>
+<img src="qr-wifi.jpeg" alt="QR Code WiFi">
 </div>
 </div>
 
@@ -491,10 +508,12 @@ document.getElementById(id).classList.add('active');
 window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function showCheckIn(lang){
-document.getElementById('checkin-ita').style.display = (lang==='ita') ? 'block':'none';
-document.getElementById('checkin-eng').style.display = (lang==='eng') ? 'block':'none';
-window.scrollTo({ top: 0, behavior: 'smooth' });
+function openQR(){
+document.getElementById("qrModal").style.display = "flex";
+}
+
+function closeQR(){
+document.getElementById("qrModal").style.display = "none";
 }
 </script>
 
